@@ -1,0 +1,126 @@
+[
+  {
+    "request_index": 1,
+    "payload": {
+      "user_identity": "developer@idntimes.com",
+      "sku": "SUBS-MTEGBXUXNHXS",
+      "transaction_id": "order-developer-test-1769505623848"
+    },
+    "verify_key_generated": "8dbf67b1f9c2e0fb213d4bdfa4a092d70988e1050c40c068f11088d8b9613d3d",
+    "status": 202,
+    "response": {
+      "status": 202,
+      "data": {
+        "order_id": "EXTE-XDNCV9VU2SPHUOP6E36R-1769505627",
+        "transaction_id": "order-developer-test-1769505623848",
+        "partner_id": "external-test-123",
+        "product": {
+          "sku": "SUBS-MTEGBXUXNHXS",
+          "name": "sku 5 code",
+          "type": "subscription",
+          "period": {
+            "name": "Daily",
+            "slug": "daily",
+            "days": 1
+          }
+        },
+        "status": "pending",
+        "created_at": 1769505624255
+      }
+    },
+    "timestamp": "2026-01-27T09:20:29.368Z"
+  },
+  {
+    "request_index": 2,
+    "payload": {
+      "user_identity": "developer@idntimes.com",
+      "sku": "SUBS-MTEGBXUXNHXS",
+      "transaction_id": "order-developer-test-1769505629368"
+    },
+    "verify_key_generated": "ad8c8a2faebf2891e53a7c9054aa161dbc0448d5c97c807ca46ac2ba922fecda",
+    "status": 202,
+    "response": {
+      "status": 202,
+      "data": {
+        "order_id": "EXTE-SNRXWR2RUQ4JZX3ABKVG-1769505629",
+        "transaction_id": "order-developer-test-1769505629368",
+        "partner_id": "external-test-123",
+        "product": {
+          "sku": "SUBS-MTEGBXUXNHXS",
+          "name": "sku 5 code",
+          "type": "subscription",
+          "period": {
+            "name": "Daily",
+            "slug": "daily",
+            "days": 1
+          }
+        },
+        "status": "pending",
+        "created_at": 1769505629636
+      }
+    },
+    "timestamp": "2026-01-27T09:20:32.090Z"
+  },
+  {
+    "request_index": 3,
+    "payload": {
+      "user_identity": "developer@idntimes.com",
+      "sku": "SUBS-MTEGBXUXNHXS",
+      "transaction_id": "order-developer-test-1769505632090"
+    },
+    "verify_key_generated": "6c294d7feb0aaf6020752349f939a8a0323fc5763046c1ccabf27bfe65a5016d",
+    "status": 202,
+    "response": {
+      "status": 202,
+      "data": {
+        "order_id": "EXTE-1ZVPGAQLW43T3N1OSFVZ-1769505632",
+        "transaction_id": "order-developer-test-1769505632090",
+        "partner_id": "external-test-123",
+        "product": {
+          "sku": "SUBS-MTEGBXUXNHXS",
+          "name": "sku 5 code",
+          "type": "subscription",
+          "period": {
+            "name": "Daily",
+            "slug": "daily",
+            "days": 1
+          }
+        },
+        "status": "pending",
+        "created_at": 1769505632110
+      }
+    },
+    "timestamp": "2026-01-27T09:20:32.462Z"
+  },
+  {
+    "request_index": 4,
+    "payload": {
+      "user_identity": "developer@idntimes.com",
+      "sku": "SUBS-MTEGBXUXNHXS",
+      "transaction_id": "order-developer-test-1769505632462"
+    },
+    "verify_key_generated": "602761c3657a4f93678eae21a5da5cca369c76d23c8d4718bf61a70886a0a086",
+    "status": 202,
+    "response": {
+      "status": 202,
+      "data": {
+        "order_id": "EXTE-BID3VVBH31BI9ADE7GS6-1769505632",
+        "transaction_id": "order-developer-test-1769505632462",
+        "partner_id": "external-test-123",
+        "product": {
+          "sku": "SUBS-MTEGBXUXNHXS",
+          "name": "sku 5 code",
+          "type": "subscription",
+          "period": {
+            "name": "Daily",
+            "slug": "daily",
+            "days": 1
+          }
+        },
+        "status": "pending",
+        "created_at": 1769505632481
+      }
+    },
+    "timestamp": "2026-01-27T09:20:32.828Z"
+  }
+]
