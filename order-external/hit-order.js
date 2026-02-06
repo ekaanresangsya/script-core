@@ -70,8 +70,9 @@ async function main() {
         }
     }
 
-    fs.writeFileSync('result.json', JSON.stringify(results, null, 2));
-    console.log('Results saved to result.json');
+    const filename = `result-${Date.now()}.json`;
+    fs.writeFileSync(filename, JSON.stringify(results, null, 2));
+    console.log(`Results saved to ${filename}`);
 }
 
 main();
