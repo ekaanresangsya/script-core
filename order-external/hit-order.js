@@ -2,8 +2,8 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction';
-const CLIENT_ID = 'saweria-9sf2u'; // change this
-const CLIENT_SECRET = 'uZ!FTrkLB3G0F!1C'; // change this
+const CLIENT_ID = 'client-id'; // change this
+const CLIENT_SECRET = 'client-secret'; // change this
 
 function generateVerifyKey(payload) {
     const compactJsonBody = JSON.stringify(payload);
@@ -17,7 +17,7 @@ async function main() {
 
     console.log(`Starting ${n} requests to ${API_URL}...`);
 
-    const sku = 'SUBS-DBATOCXJWEWH' // change this
+    const sku = 'SUBS-ABCDEF12345' // change this
 
     const userIdentity = 'developer@idntimes.com'
 
@@ -43,7 +43,7 @@ async function main() {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-Api-Key': '6bb2976e-6eef-46e2-814d-1d622a890540',
+                    'X-Api-Key': '', // change this
                     'Client-Id': CLIENT_ID,
                     'Verify-Key': verifyKey
                 },
