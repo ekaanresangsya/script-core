@@ -1,9 +1,9 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-const API_URL = 'https://core-middleware.idn.media/api/v1/pay-in/external-transaction';
-const CLIENT_ID = 'idn-app-5Feb2026'; // from curl
-const CLIENT_SECRET = 'idn-app-5Feb2026'; // User needs to fill this
+const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction';
+const CLIENT_ID = 'saweria-9sf2u'; // change this
+const CLIENT_SECRET = 'uZ!FTrkLB3G0F!1C'; // change this
 
 function generateVerifyKey(payload) {
     const compactJsonBody = JSON.stringify(payload);
@@ -12,35 +12,40 @@ function generateVerifyKey(payload) {
 }
 
 async function main() {
-    const n = 99;
+    const n = 50;
     const results = [];
 
     console.log(`Starting ${n} requests to ${API_URL}...`);
 
-    const user_identity = 'developer@idntimes.com'
-    const sku = 'SUBS-VLPLNMTFPTTB'
+    const sku = 'SUBS-DBATOCXJWEWH' // change this
 
-    for (let i = 0; i < n; i++) {
+    const userIdentity = 'developer@idntimes.com'
+
+    for (let i = 1; i <= n; i++) {
         const timestamp = Date.now();
-        const transaction_id = `order-developer-test-${timestamp}`;
+        const uuid = crypto.randomUUID().toString();
+        const transactionID = `order-developer-test-${timestamp}-${uuid}`;
 
         const payload = {
-            "user_identity": user_identity,
+            "user_identity": userIdentity,
             "sku": sku,
-            "transaction_id": transaction_id
+            "transaction_id": transactionID
         };
 
-        const verify_key = generateVerifyKey(payload);
+        const verifyKey = generateVerifyKey(payload);
+
+        console.log(`Sending request ${i}/${n}...`);
+        console.log(`Transaction ID: ${transactionID}`);
 
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'accept': 'application/json',
-                    'x-api-key': '6bb2976e-6eef-46e2-814d-1d622a890540',
+                    'X-Api-Key': '6bb2976e-6eef-46e2-814d-1d622a890540',
                     'Client-Id': CLIENT_ID,
-                    'Verify-Key': verify_key
+                    'Verify-Key': verifyKey
                 },
                 body: JSON.stringify(payload)
             });
@@ -48,21 +53,21 @@ async function main() {
             const data = await response.json().catch(err => ({ error: 'Invalid JSON response', raw: err.message }));
 
             const result = {
-                request_index: i + 1,
+                requestID: i,
                 payload: payload,
-                verify_key_generated: verify_key,
+                verifyKeyGenerated: verifyKey,
                 status: response.status,
                 response: data,
                 timestamp: new Date().toISOString()
             };
 
             results.push(result);
-            console.log(`Request ${i + 1}/${n}: Status ${response.status}`);
-
+            console.log(`Status: ${response.status}`);
+            console.log(`Response:`, data);
         } catch (error) {
-            console.error(`Request ${i + 1} failed:`, error.message);
+            console.error(`Request ${i} failed:`, error.message);
             results.push({
-                request_index: i + 1,
+                requestID: i,
                 payload: payload,
                 error: error.message,
                 timestamp: new Date().toISOString()
