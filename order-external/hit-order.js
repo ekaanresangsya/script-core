@@ -1,9 +1,11 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction';
-const CLIENT_ID = 'client-id'; // change this
-const CLIENT_SECRET = 'client-secret'; // change this
+const API_URL = 'https://core-middleware.idn.media/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
+// const CLIENT_ID = 'external-test-123'; // change this to the actual client ID
+// const CLIENT_SECRET = 'Extern4lT3st123!'; // change this to the actual client secret
+const CLIENT_ID = 'fnb-hv3cy7'; // change this to the actual client ID
+const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg'; // change this to the actual client secret
 
 function generateVerifyKey(payload) {
     const compactJsonBody = JSON.stringify(payload);
@@ -12,19 +14,19 @@ function generateVerifyKey(payload) {
 }
 
 async function main() {
-    const n = 50;
+    const n = 5000; // change this to the number of requests you want to send
     const results = [];
 
     console.log(`Starting ${n} requests to ${API_URL}...`);
 
-    const sku = 'SUBS-ABCDEF12345' // change this
+    const sku = 'SUBS-OVRXDGSVFEFG' // change this to the actual SKU
 
     const userIdentity = 'developer@idntimes.com'
 
     for (let i = 1; i <= n; i++) {
         const timestamp = Date.now();
         const uuid = crypto.randomUUID().toString();
-        const transactionID = `order-developer-test-${timestamp}-${uuid}`;
+        const transactionID = `order-developer-${timestamp}-${uuid}`;
 
         const payload = {
             "user_identity": userIdentity,
@@ -43,7 +45,7 @@ async function main() {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-Api-Key': '', // change this
+                    'X-Api-Key': '6bb2976e-6eef-46e2-814d-1d622a890540', // change this to the actual API key
                     'Client-Id': CLIENT_ID,
                     'Verify-Key': verifyKey
                 },
@@ -75,7 +77,8 @@ async function main() {
         }
     }
 
-    const filename = `result-${Date.now()}.json`;
+    const dateNow = Date.now();
+    const filename = `result-${dateNow}-${n}.json`;
     fs.writeFileSync(filename, JSON.stringify(results, null, 2));
     console.log(`Results saved to ${filename}`);
 }
