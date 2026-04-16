@@ -2,10 +2,18 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 const API_URL = 'https://core-middleware.idn.media/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
-// const CLIENT_ID = 'external-test-123'; // change this to the actual client ID
-// const CLIENT_SECRET = 'Extern4lT3st123!'; // change this to the actual client secret
+const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
 const CLIENT_ID = 'fnb-hv3cy7'; // change this to the actual client ID
 const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg'; // change this to the actual client secret
+const PACKAGE_SKU = 'SUBS-OVRXDGSVFEFG' // change this to the actual SKU
+const PURCHASE_LIMIT = 0; // change this to the number of purchases you want to simulate
+
+// const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
+// const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
+// const CLIENT_ID = 'vocagame-rc9mr'; // change this to the actual client ID
+// const CLIENT_SECRET = 'iLK)jgNE?Z:8c8eH'; // change this to the actual client secret
+// const PACKAGE_SKU = 'SUBS-VZIFOBMJTVYE' // change this to the actual SKU
+// const PURCHASE_LIMIT = 1; // change this to the number of purchases you want to simulate
 
 function generateVerifyKey(payload) {
     const compactJsonBody = JSON.stringify(payload);
@@ -14,12 +22,10 @@ function generateVerifyKey(payload) {
 }
 
 async function main() {
-    const n = 5000; // change this to the number of requests you want to send
+    const n = PURCHASE_LIMIT;
     const results = [];
 
     console.log(`Starting ${n} requests to ${API_URL}...`);
-
-    const sku = 'SUBS-OVRXDGSVFEFG' // change this to the actual SKU
 
     const userIdentity = 'developer@idntimes.com'
 
@@ -30,7 +36,7 @@ async function main() {
 
         const payload = {
             "user_identity": userIdentity,
-            "sku": sku,
+            "sku": PACKAGE_SKU,
             "transaction_id": transactionID
         };
 
@@ -43,11 +49,11 @@ async function main() {
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-Api-Key': '6bb2976e-6eef-46e2-814d-1d622a890540', // change this to the actual API key
+                    'X-Api-Key': API_KEY,
                     'Client-Id': CLIENT_ID,
-                    'Verify-Key': verifyKey
+                    'Verify-Key': verifyKey,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload)
             });
@@ -74,6 +80,11 @@ async function main() {
                 error: error.message,
                 timestamp: new Date().toISOString()
             });
+        }
+
+        // Add delay between requests to avoid rate limiting, except after the last request
+        if (i < n) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
         }
     }
 
