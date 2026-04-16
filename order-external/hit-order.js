@@ -1,19 +1,19 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-const API_URL = 'https://core-middleware.idn.media/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
-const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
-const CLIENT_ID = 'fnb-hv3cy7'; // change this to the actual client ID
-const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg'; // change this to the actual client secret
-const PACKAGE_SKU = 'SUBS-OVRXDGSVFEFG' // change this to the actual SKU
-const PURCHASE_LIMIT = 0; // change this to the number of purchases you want to simulate
-
-// const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
+// const API_URL = 'https://core-middleware.idn.media/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
 // const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
-// const CLIENT_ID = 'vocagame-rc9mr'; // change this to the actual client ID
-// const CLIENT_SECRET = 'iLK)jgNE?Z:8c8eH'; // change this to the actual client secret
-// const PACKAGE_SKU = 'SUBS-VZIFOBMJTVYE' // change this to the actual SKU
-// const PURCHASE_LIMIT = 1; // change this to the number of purchases you want to simulate
+// const CLIENT_ID = 'fnb-hv3cy7'; // change this to the actual client ID
+// const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg'; // change this to the actual client secret
+// const PACKAGE_SKU = 'SUBS-OVRXDGSVFEFG' // change this to the actual SKU
+// const PURCHASE_LIMIT = 0; // change this to the number of purchases you want to simulate
+
+const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
+const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
+const CLIENT_ID = 'vocagame-rc9mr'; // change this to the actual client ID
+const CLIENT_SECRET = 'iLK)jgNE?Z:8c8eH'; // change this to the actual client secret
+const PACKAGE_SKU = 'SUBS-VZIFOBMJTVYE' // change this to the actual SKU
+const PURCHASE_LIMIT = 1; // change this to the number of purchases you want to simulate
 
 function generateVerifyKey(payload) {
     const compactJsonBody = JSON.stringify(payload);
