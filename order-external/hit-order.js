@@ -1,19 +1,23 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-// const API_URL = 'https://core-middleware.idn.media/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
-// const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
+const API_URL = 'https://core-middleware.idn.media/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
+const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
 // const CLIENT_ID = 'fnb-hv3cy7'; // change this to the actual client ID
 // const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg'; // change this to the actual client secret
 // const PACKAGE_SKU = 'SUBS-OVRXDGSVFEFG' // change this to the actual SKU
-// const PURCHASE_LIMIT = 0; // change this to the number of purchases you want to simulate
+const CLIENT_ID = 'indom-hv3cy7';
+const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg';
+const transIDPrefix = 'order-developer-indomaret'
+const PACKAGE_SKU = "SUBS-NYWEDTSUGKUX"
+const PURCHASE_LIMIT = 4998; // change this to the number of purchases you want to simulate
 
-const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
-const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
-const CLIENT_ID = 'vocagame-rc9mr'; // change this to the actual client ID
-const CLIENT_SECRET = 'iLK)jgNE?Z:8c8eH'; // change this to the actual client secret
-const PACKAGE_SKU = 'SUBS-VZIFOBMJTVYE' // change this to the actual SKU
-const PURCHASE_LIMIT = 1; // change this to the number of purchases you want to simulate
+// const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
+// const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
+// const CLIENT_ID = 'vocagame-rc9mr'; // change this to the actual client ID
+// const CLIENT_SECRET = 'iLK)jgNE?Z:8c8eH'; // change this to the actual client secret
+// const PACKAGE_SKU = 'SUBS-VZIFOBMJTVYE' // change this to the actual SKU
+// const PURCHASE_LIMIT = 1; // change this to the number of purchases you want to simulate
 
 function generateVerifyKey(payload) {
     const compactJsonBody = JSON.stringify(payload);
@@ -32,7 +36,7 @@ async function main() {
     for (let i = 1; i <= n; i++) {
         const timestamp = Date.now();
         const uuid = crypto.randomUUID().toString();
-        const transactionID = `order-developer-${timestamp}-${uuid}`;
+        const transactionID = `${transIDPrefix}-${timestamp}-${uuid}`;
 
         const payload = {
             "user_identity": userIdentity,
@@ -84,7 +88,7 @@ async function main() {
 
         // Add delay between requests to avoid rate limiting, except after the last request
         if (i < n) {
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise(resolve => setTimeout(resolve, 500));
         }
     }
 
