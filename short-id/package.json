@@ -1,0 +1,12 @@
+{
+  "name": "short-id-checker",
+  "version": "1.0.0",
+  "description": "Check and fix short_id mismatches",
+  "main": "check-short-id.js",
+  "scripts": {
+    "start": "node check-short-id.js"
+  },
+  "dependencies": {
+    "mysql2": "3.14.0"
+  }
+}

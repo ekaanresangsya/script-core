@@ -6,23 +6,17 @@ const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the ac
 // const CLIENT_ID = 'fnb-hv3cy7'; // change this to the actual client ID
 // const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg'; // change this to the actual client secret
 // const PACKAGE_SKU = 'SUBS-OVRXDGSVFEFG' // change this to the actual SKU
-// const CLIENT_ID = 'external-test-123';
-// const CLIENT_SECRET = 'Extern4lT3st123!';
-// const transIDPrefix = 'order-developer-external-test'
-// const PACKAGE_SKU = "SUBS-DFPSNNEMRHJS"
-// const PURCHASE_LIMIT = 9; // change this to the number of purchases you want to simulate
+// const CLIENT_ID = 'alfagift-hv3cy7'; 
+// const CLIENT_SECRET = 'Lp[6k1phO{AKFwPg';
+// const transIDPrefix = 'order-developer-alfagift'
+// const PACKAGE_SKU = "SUBS-LEACBEXHJDKK"
+// const PURCHASE_LIMIT = 20000; // change this to the number of purchases you want to simulate
 
-const CLIENT_ID = 'blibli-sq47j2';
-const CLIENT_SECRET = 'ntw!gcYw]2oE0(Nl';
-const transIDPrefix = 'order-developer-blibli'
-const PACKAGE_SKU = "SUBS-TUMAECYEWBMZ"
-const PURCHASE_LIMIT = 500; // change this to the number of purchases you want to simulate
-
-// const CLIENT_ID = 'xl-axiata-k7m9p';
-// const CLIENT_SECRET = 'aX8$mN4vQ2@pL9rT';
-// const transIDPrefix = 'order-developer-xl'
-// const PACKAGE_SKU = "SUBS-FMZZQPAXGOFP"
-// const PURCHASE_LIMIT = 25; // change this to the number of purchases you want to simulate
+const CLIENT_ID = 'external-test-123';
+const CLIENT_SECRET = 'Extern4lT3st123!';
+const transIDPrefix = 'order-developer-sangsya'
+const PACKAGE_SKU = "SUBS-URGAQEFOMIMW"
+const PURCHASE_LIMIT = 2; // change this to the number of purchases you want to simulate
 
 // const API_URL = 'https://core-middleware.sateklopo.com/api/v1/pay-in/external-transaction'; // change this to the actual API endpoint
 // const API_KEY = '6bb2976e-6eef-46e2-814d-1d622a890540'; // change this to the actual API key
@@ -101,7 +95,7 @@ async function main() {
 
         // Add delay between requests to avoid rate limiting, except after the last request
         if (i < n) {
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            await new Promise(resolve => setTimeout(resolve, 500));
         }
     }
 

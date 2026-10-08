@@ -1,0 +1,12 @@
+{
+  "name": "create-auth-activities",
+  "version": "1.0.0",
+  "description": "Insert authenticate_activities dari list_uuid.csv",
+  "main": "insert_auth_activities.js",
+  "scripts": {
+    "start": "node insert_auth_activities.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.22.5"
+  }
+}

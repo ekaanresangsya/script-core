@@ -1,3 +1,5 @@
 .env
 result*.json
 *.csv
+
+*node_modules*
